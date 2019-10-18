@@ -2,14 +2,15 @@ import pprint
 import random
 import json
 import gspread
+import os
 
 from oauth2client.service_account import ServiceAccountCredentials
 
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 
-credentials = ServiceAccountCredentials.from_json_keyfile_name('../config/puppypost-dae4df89a47e.json', scope)
-with open('../config/config.json') as f:
+credentials = ServiceAccountCredentials.from_json_keyfile_name('../../config/puppypost-dae4df89a47e.json', scope)
+with open('../../config/config.json') as f:
     config = json.load(f)
 
 gc = gspread.authorize(credentials)
@@ -29,7 +30,7 @@ for row in sheet[1:]:
             'rank': int(row[2]) if row[2] else 10,
             'tags': {tag for tag in row[3:] if tag}
         }
-        affinities.add(titles[t]['wt']);
+        affinities.add(titles[t]['wt'])
 
 pprint.pprint(titles)
 pprint.pprint(sorted(list(affinities)))
@@ -78,12 +79,17 @@ def order_pair(a, b):
     return [b, a] if roll < pa else [a, b]
 
 
-log = []
-for i in range(5000):
-    # print(' '.join(make_pair(alliteration=True)))
-    pair = ' '.join(make_pair(alliteration=i % 10 == 0))
-    log.append(pair)
-    print(pair)
+# log = []
+# for i in range(5000):
+#     # print(' '.join(make_pair(alliteration=True)))
+#     pair = ' '.join(make_pair(alliteration=i % 10 == 0))
+#     log.append(pair)
+#     print(pair)
 
 # with open('words.txt', 'w+') as f:
 #   f.write('\n'.join(log))
+
+
+fns = [fn for fn in os.listdir('dump')]
+print(fns)
+
