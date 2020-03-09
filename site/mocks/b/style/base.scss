@@ -1,0 +1,108 @@
+
+* {
+    box-sizing: border-box;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    scroll-behavior: smooth;
+    margin: 0;
+    color: #24292e;
+    font-family: $fontstack;
+  
+    font-size: 20px;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  
+    font-size: 14px;
+    font-weight: 400;
+    color: #4f566b;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: $fontstack;
+  }
+  
+  // h1 {
+  //   font-size: 8em;
+  // }
+  
+  // h2 {
+  //   font-size: 2.5em;
+  // }
+  
+  // h3 {
+  //   font-family: Platform Web, $fontstack;
+  //   font-weight: 700;
+  //   font-style: normal;
+  //   font-stretch: normal;
+  //   font-size: 1.75em;
+  // }
+  
+  ol,
+  p,
+  ul {
+  }
+  
+  a {
+    color: initial;
+  }
+  
+  .nobreak {
+    white-space: nowrap;
+  }
+  
+  a:hover {
+    cursor: pointer;
+  }
+  
+  b,
+  strong {
+    font-weight: bolder;
+  }
+  
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+  }
+  
+  button {
+    padding: 0;
+    border: none;
+    outline: none;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    text-decoration: none;
+    cursor: pointer;
+  
+    &:focus {
+      outline: none;
+      background-color: initial;
+    }
+  }
+  
+  img {
+    border-style: none;
+    max-width: 100%;
+  }
+  

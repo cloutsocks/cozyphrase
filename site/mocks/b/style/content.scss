@@ -1,0 +1,202 @@
+body {
+  background: url(https://www.animal-crossing.com/new-horizons/assets/img/global/patterns/pattern-confetti.jpg);
+  background: #333;
+  background: #aef6e0;
+  background: white;
+  background: #fff3f7;
+  background: #fff3f7;
+  background: white;
+  background: #fff3f7;
+
+  background: #D5EAF9;
+
+  background: #E7F5FF;
+
+  &.night {
+    background: #333;
+    background: #aef6e0;
+    background: white;
+    background: #fff3f7;
+    background: #332f35;
+  }
+}
+
+.phrase-grid {
+  display: flex;
+  flex-direction: column;
+  // margin-left: 40px;
+  margin-top: 28px;
+  margin-left: -150px;
+
+  align-items: center;
+}
+
+.phrase {
+  width: 400px;
+  height: 46px;
+  background: white;
+  border-radius: 6px;
+  position: relative;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.title {
+  text-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  text-shadow: -2px 0px 1px #fff, 2px 0px 1px #fff, 0px 0px 1px #fff, -2px -2px 1px #fff, 2px -2px 1px #fff,
+    0px -2px 1px #fff, -2px 2px 1px #fff, 2px 2px 1px #fff, 0px 2px 1px #fff;
+}
+
+.oldphrase {
+  margin: 15px 0;
+  margin: 12px 25px;
+  width: fit-content;
+
+  &.unit {
+    margin: 5px 0px;
+    padding: 8px 25px;
+    border-radius: 6px;
+    background: white;
+  }
+  .banner {
+    width: 320px;
+    height: 28px;
+
+    width: 388px;
+    height: 34px;
+
+    width: 350px;
+    height: 30px;
+
+    background: no-repeat;
+    background-size: 100%;
+  }
+}
+
+$outlineColor: rgba(0, 0, 0, 1);
+$outlineOffset: 1px;
+
+.night .titleold {
+  color: white;
+  text-shadow: 1px 1px 0 black;
+  text-shadow: 1px 1px 0 black, 0px -1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  text-shadow: 1px 1px 0 black, 0px -1px 3px rgba(0, 0, 0, 0.3);
+
+  text-shadow: 2px 2px 0 black, 0px -1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.titleold {
+  font-family: "Noto Sans";
+  font-family: "Mali";
+  font-family: "Josefin Sans";
+  font-family: "Gaegu", cursive;
+  /* font-family: "M+ P Type-1 (basic latin) Bold"; */
+
+  letter-spacing: 0px;
+
+  font-size: 30px;
+  margin-left: 32px;
+  position: relative;
+  top: -8px;
+  top: -9px;
+  left: 8px;
+  left: 13px;
+  left: 16px;
+  color: #333;
+
+
+  
+
+  text-shadow: -1 * $outlineOffset -1 * $outlineOffset 0 $outlineColor,
+    $outlineOffset -1 * $outlineOffset 0 $outlineColor, -1 * $outlineOffset $outlineOffset 0 $outlineColor,
+    $outlineOffset $outlineOffset 0 $outlineColor;
+
+  text-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  text-shadow: -2px 0px 1px #fff, 2px 0px 1px #fff, 0px 0px 1px #fff, -2px -2px 1px #fff, 2px -2px 1px #fff,
+    0px -2px 1px #fff, -2px 2px 1px #fff, 2px 2px 1px #fff, 0px 2px 1px #fff;
+
+  &.mali {
+    font-family: "Mali";
+    font-size: 21px;
+    letter-spacing: 0.5px;
+    top: -3px;
+    left: 16px;
+
+    top: -1px;
+    left: 24px;
+
+
+    font-size: 16px;
+    letter-spacing: 0;
+    top: -3px;
+    left: 16px;
+    top: -1px;
+    left: 24px;
+    
+    top: 2px;
+  }
+}
+
+.titleold-bg {
+  &.autumn {
+    background-image: url("./img/banners/autumn.png");
+  }
+}
+
+.banner {
+  &.autumn {
+    background-size: auto;
+    background-image: url("./img/banners/autumn.png");
+  }
+
+  &.floral {
+    background-image: url("./img/banners/floral_kh.png");
+  }
+
+  &.butterfly {
+    background-image: url("./img/banners/butterfly_kh.png");
+  }
+
+  &.ribbons {
+    background-image: url("./img/banners/ribbons_kh.png");
+  }
+
+  &.standard {
+    background-image: url("./img/banners/standard_teal_kh.png");
+  }
+
+  &.bee {
+    background-image: url("./img/banners/bee_kh.png");
+  }
+
+  &.paint {
+    background-image: url("./img/banners/paint_kh.png");
+  }
+
+  &.space {
+    background-image: url("./img/banners/space_kh.png");
+  }
+
+  &.apples {
+    background-image: url("./img/banners/apples_kh.png");
+  }
+
+  &.blue-hearts {
+    background-image: url("./img/banners/blue_hearts_kh.png");
+  }
+
+  &.music {
+    background-image: url("./img/banners/music_kh.png");
+  }
+
+  &.leaves {
+    background-image: url("./img/banners/leaves_kh.png");
+  }
+
+}

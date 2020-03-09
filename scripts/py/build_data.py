@@ -10,8 +10,10 @@ import pronouncing
 
 from oauth2client.service_account import ServiceAccountCredentials
 
-saveToFile = False
-phraseCount = 500 #5000
+saveToFile = True
+phraseCount = 10000
+
+acMode = False
 
 p = inflect.engine()
 
@@ -24,7 +26,7 @@ with open('../../config/config.json') as f:
 
 gc = gspread.authorize(credentials)
 spreadsheet = gc.open_by_key(config['sheet_key'])
-worksheet = spreadsheet.worksheet('words')
+worksheet = spreadsheet.worksheet('acnh' if acMode else 'words')
 sheet = worksheet.get_all_values()
 
 
@@ -32,28 +34,10 @@ sheet = worksheet.get_all_values()
 
 titles = {}
 affinities = set()
-# for row in sheet[1:]:
-#     t = row[1]
-#     if t and t not in titles and not t.startswith('*'):
-#         tags = {tag for tag in row[5:] if tag}
-#         if 'acnh' not in tags:
-#             continue
-#
-#         titles[t] = {
-#             'wt': float(row[2]) if row[2] else 0,
-#             'rank': int(row[3]) if row[3] else 10,
-#             'plural': float(row[4]) if row[4] else 0,
-#             'tags': tags
-#         }
-#         affinities.add(titles[t]['wt'])
-
 for row in sheet[1:]:
     t = row[1]
     if t and t not in titles and not t.startswith('*'):
         tags = {tag for tag in row[5:] if tag}
-        if 'acnh' not in tags:
-            continue
-
         titles[t] = {
             'wt': float(row[2]) if row[2] else 0,
             'rank': int(row[3]) if row[3] else 10,
@@ -62,55 +46,65 @@ for row in sheet[1:]:
         }
         affinities.add(titles[t]['wt'])
 
+# for t in titles.keys():
+#     if t.startswith('v'):
+#         print(t)
+#
+# sys.exit(0)
+
+
 
 
 # pprint.pprint(sorted(list(affinities)))
 
-# animals = []
-# animals_sheet = spreadsheet.worksheet('animals').get_all_values()
-# for row in animals_sheet:
-#     t = row[0]
-#     if t and t not in titles and not t.startswith('*'):
-#         titles[t] = {
-#             'wt': 0,
-#             'rank': 10,
-#             'plural': 0,
-#             'tags': 'animal'
-#         }
-#         affinities.add(titles[t]['wt'])
-#         animals.append(t)
-#
-# colors = []
-# colors_sheet = spreadsheet.worksheet('colors').get_all_values()
-# for row in colors_sheet:
-#     t = row[0] + '#' if row[0] else None
-#     if t and t not in titles and not t.startswith('*'):
-#         titles[t] = {
-#             'wt': -1,
-#             'rank': 2,
-#             'plural': 0,
-#             'tags': 'color'
-#         }
-#         affinities.add(titles[t]['wt'])
-#         colors.append(t)
-#
-#         if not t[:-1] in titles:
-#             titles[t[:-1]] = titles[t]
-#
-#
-# foods = []
-# food_sheet = spreadsheet.worksheet('food').get_all_values()
-# for row in food_sheet:
-#     t = row[0]
-#     if t and t not in titles and not t.startswith('*'):
-#         titles[t] = {
-#             'wt': 0,
-#             'rank': 4,
-#             # 'plural': 0,
-#             'tags': 'food'
-#         }
-#         affinities.add(titles[t]['wt'])
-#         foods.append(t)
+if not acMode:
+    animals = []
+    animals_sheet = spreadsheet.worksheet('animals').get_all_values()
+    for row in animals_sheet:
+        t = row[0]
+        if t and t not in titles and not t.startswith('*'):
+            titles[t] = {
+                'wt': 0,
+                'rank': 10,
+                'plural': 0,
+                'tags': 'animal'
+            }
+            affinities.add(titles[t]['wt'])
+            animals.append(t)
+
+    colors = []
+    colors_sheet = spreadsheet.worksheet('colors').get_all_values()
+    for row in colors_sheet:
+        t = row[0] + '#' if row[0] else None
+        if t and t not in titles and not t.startswith('*'):
+            titles[t] = {
+                'wt': -1,
+                'rank': 2,
+                'plural': 0,
+                'tags': 'color'
+            }
+            affinities.add(titles[t]['wt'])
+            colors.append(t)
+
+            if not t[:-1] in titles:
+                titles[t[:-1]] = titles[t]
+
+
+    foods = []
+    food_sheet = spreadsheet.worksheet('food').get_all_values()
+    for row in food_sheet:
+        t = row[0]
+        if t and t not in titles and not t.startswith('*'):
+            titles[t] = {
+                'wt': 0,
+                'rank': 4,
+                # 'plural': 0,
+                'tags': 'food'
+            }
+            affinities.add(titles[t]['wt'])
+            foods.append(t)
+
+
 
 
 pprint.pprint(titles)
@@ -122,7 +116,7 @@ def make_pair(alliteration=False, sampleColors=False, sampleAnimals=False):
         l = random.sample(titles.keys(), 2)
         a, b = l
 
-        if is_double_prefix_or_suffix(a, b):
+        if is_double_prefix_or_suffix(a, b, strict=False):
             continue
 
         if alliteration and (' ' in a or ' ' in b or a[0] != b[0]):
@@ -142,7 +136,7 @@ def make_pair(alliteration=False, sampleColors=False, sampleAnimals=False):
 
 
 def is_double_prefix_or_suffix(a, b, strict=True):
-    threshold = 1 if strict else 0.75 #8
+    threshold = 1 if strict else 0.9 # 0.75 #8
     return titles[a]['wt'] <= -threshold and titles[b]['wt'] <= -threshold or \
            titles[a]['wt'] >= threshold and titles[b]['wt'] >= threshold
 
@@ -176,8 +170,8 @@ def join_pair(a=None, b=None, pair=None, clean=False):
     if a.endswith('-') or b.startswith('-'):
         return a + b
 
-    if b.startswith('^'):
-        return a + b[1:]
+    if '^' in a or '^' in b:
+        return (a + b).replace('^', '')
 
     return f'{a} {b}'
 
@@ -196,9 +190,15 @@ for i in range(phraseCount):
     # pair = make_pair(alliteration=True, sampleColors=random.random() < 0.3)
 
     # pair = [p.plural_noun(pair[0]), p.plural_noun(pair[1])]
+
     text = join_pair(pair=pair)
     log.append(text)
+
+    # if len(text.replace(' ', '')) <= 10:
+    #     print(text)
+
     print(text)
+    # print(f'''{text} {len(text.replace(' ', ''))}''')
 
 
 title_list = [remove_markup(t) for t in titles]

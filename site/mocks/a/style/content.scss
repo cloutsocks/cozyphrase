@@ -1,0 +1,37 @@
+.phrases {
+  display: grid;
+  // grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+  font-family: dosis;
+  font-size: 18px;
+  color: #a47868;
+  letter-spacing: 2px;
+  font-weight: 600;
+  /* color: rgba(0,0,0,0.6); */
+  color: hsla(16, 25%, 42%, 1);
+
+  width: 80%;
+  margin: 0 auto;
+
+
+
+
+  font-size: 18px;
+  color: #a47868;
+  letter-spacing: 0px;
+  color: #865f50;
+  font-weight: 300;
+  font-family: 'Segoe UI';
+
+
+
+  font-family: "AikoWeb";
+    font-size: 16px;
+
+  .phrase {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
