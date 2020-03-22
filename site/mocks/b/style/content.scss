@@ -12,6 +12,9 @@ body {
 
   background: #E7F5FF;
 
+  background: #fff3f7;
+  /* background: url('./img/acnh_pattern_1920.jpg'); */
+
   &.night {
     background: #333;
     background: #aef6e0;
@@ -19,6 +22,17 @@ body {
     background: #fff3f7;
     background: #332f35;
   }
+}
+
+.wobbly-bg {
+  color: white;
+  position: absolute;
+  width: 400px;
+  /* height: 50px; */
+  top: -4px;
+  top: -2px;
+  /* left: -3px; */
+  margin: 0;
 }
 
 .phrase-grid {
@@ -32,20 +46,30 @@ body {
 }
 
 .phrase {
+  color: #444;
   width: 400px;
-  height: 46px;
-  background: white;
-  border-radius: 6px;
+  height: 50px;
+  /* background: white; */
+  /* border-radius: 6px; */
   position: relative;
+  margin: 5px 0px;
+  margin: 6px 0px;
+
+  /* border-radius: 29px/22px; */
 }
 
 .text {
+  position: relative;
   display: flex;
   align-items: center;
   height: 100%;
+  margin-left: 80px;
 }
 
 .title {
+  font-family: "Mali";
+  font-size: 16px;
+  color: #333;
   text-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   text-shadow: -2px 0px 1px #fff, 2px 0px 1px #fff, 0px 0px 1px #fff, -2px -2px 1px #fff, 2px -2px 1px #fff,
     0px -2px 1px #fff, -2px 2px 1px #fff, 2px 2px 1px #fff, 0px 2px 1px #fff;
@@ -149,7 +173,7 @@ $outlineOffset: 1px;
   }
 }
 
-.banner {
+/* .banner {
   &.autumn {
     background-size: auto;
     background-image: url("./img/banners/autumn.png");
@@ -199,4 +223,47 @@ $outlineOffset: 1px;
     background-image: url("./img/banners/leaves_kh.png");
   }
 
+} */
+
+
+.nook {
+/*   height: 100%;
+  position: absolute;
+  left: -46px;
+  width: 31px;
+  display: flex;
+  align-items: center;
+  transform: rotate(-6deg);
+
+  height: 100%;
+    position: absolute;
+    left: -18px;
+    width: 25px;
+    top: 8px;
+    display: flex;
+    align-items: center; */
+
+
+    height: 100%;
+    position: absolute;
+    left: -46px;
+    width: 31px;
+    display: flex;
+    align-items: center;
+    /* transform: rotate(-6deg); */
+    height: 100%;
+    position: absolute;
+    /* left: -18px; */
+    width: 25px;
+    /* top: 8px; */
+    display: flex;
+    align-items: center;
+
+    transform: rotate(-6deg);
+
+    left: -50px;
+
+    display: none;
+
+    
 }
