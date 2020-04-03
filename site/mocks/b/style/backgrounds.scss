@@ -1,5 +1,4 @@
 .bg {
-
     position: absolute;
     top: 0;
     left: 0;
@@ -7,15 +6,103 @@
     height: 100%;
     background-repeat: no-repeat;
 
-    &.autumn {
+    &.autumn1 {
         background-image: url("./img/banners/autumn.png");
-        width: 400px;
+        background-position: 14px 5px;
+    }
+
+    &.spring {
+        background-image: url("./img/banners/spring1.png");
+        background-size: 356px;
+        background-position: 16px 1px;
+    }
+
+    &.winter {
+        background-image: url("./img/banners/winter1.png");
+        background-size: 380px;
+        background-position: 9px 0;
+        height: 70px;
+        top: -6px;
+
+        background-size: 370px;
+        background-position: 12px 0;
+        height: 70px;
+        top: -3px;
+    }
+
+    &.summer {
+        background-image: url("./img/banners/summer1.png");
+        background-size: 360px;
+        background-position: 10px -2px;
     }
 
     &.rain {
         background-image: url("./img/banners/rain.png");
-        background-position: 24px 3px;
-        overflow: visible;
+        background-position: 27px 0px;
         height: 54px;
+        top: -2px;
+    }
+
+    &.clouds {
+        background-image: url("./img/banners/clouds1.png");
+        background-size: 384px;
+        background-position: 12px 0px;
+    }
+
+    &.leaves {
+        background-image: url("./img/banners/leaves.png");
+        background-size: 390px;
+        background-position: 6px 2px;
+    }
+
+    &.letters1 {
+        background-image: url("./img/banners/letters2.png");
+        background-size: 381px;
+        background-position: 10px 0px;
+    }
+
+    &.sports {
+        background-image: url("./img/banners/sports.png");
+        background-size: 380px;
+        background-position: 6px -4px;
+        /* mask: url("./img/acnh-bubble-wide.svg"); */
+        background-size: 350px;
+        background-position: 20px 1px;
+    }
+
+    &.roses {
+        background-image: url("./img/banners/roses.png");
+        background-size: 360px;
+        background-position: 10px 4px;
+    }
+
+    &.oranges {
+        background-image: url("./img/banners/oranges.png");
+        background-size: 360px;
+        background-position: 10px -2px;
+    }
+
+    &.paint {
+        background-image: url("./img/banners/paint.png");
+        background-size: 360px;
+        background-position: 10px -2px;
+        background-size: 368px;
+        background-position: 8px 2px;
+        background-size: 360px;
+        background-position: 10px 1px;
+    }
+
+    &.strawberries {
+        background-image: url("./img/banners/strawberries.png");
+        background-size: 360px;
+        background-position: 10px -2px;
+    }
+
+    &.meow {
+        background-image: url("./img/banners/meow.png");
+        background-size: 360px;
+        background-position: 10px -2px;
+        background-size: 362px;
+        background-position: 15px -3px;
     }
 }

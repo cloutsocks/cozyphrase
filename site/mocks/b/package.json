@@ -9,9 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "gerber-to-svg": "^4.2.0"
   },
   "devDependencies": {
+    "parcel-plugin-static-files-copy": "^2.3.1",
     "sass": "^1.25.0"
   }
 }
